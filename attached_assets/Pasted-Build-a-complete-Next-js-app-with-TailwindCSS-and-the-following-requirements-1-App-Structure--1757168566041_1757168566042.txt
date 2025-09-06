@@ -1,0 +1,75 @@
+Build a complete Next.js app with TailwindCSS and the following requirements:
+
+1. **App Structure**
+   - Use Next.js 14 (App Router).
+   - TailwindCSS for styling with a clean, modern, fun design.
+   - Deployable on Vercel for free hosting.
+   - All components should be responsive and mobile-first.
+
+2. **Landing Page (index.tsx)**
+   - Top section: A centered **search bar**.
+     - Users can type a keyword (service, category, genre).
+     - Filters cards in real time.
+   - Bottom section: 3 **accordion tabs** aligned horizontally:
+     - Tab 1: Affiliate
+     - Tab 2: Code
+     - Tab 3: Coupon
+   - Inside each tab: display **cards** dynamically fetched from Google Sheets.
+
+3. **Cards**
+   - Follow this design inspiration: https://uiverse.io/SachinKumar666/new-donkey-55
+   - Each card contains:
+     - Service name
+     - Offer/description
+     - Price (optional)
+     - A clickable link OR coupon code
+     - A badge (e.g. “NEW”, “HOT”) visible on hover
+     - A button at the bottom: **“View Reviews”**
+   - Card Interactions:
+     - If it’s a link: Clicking tracks the event and redirects to affiliate link.
+     - If it’s a coupon code: Clicking copies the code to clipboard and shows a toast/snackbar saying “Code copied!”.
+     - “View Reviews” → navigates to `/reviews/[slug]`.
+
+4. **Reviews Pages**
+   - Create a dynamic route `/reviews/[slug]`.
+   - Fetch review content from markdown files stored in a `/content/reviews` folder.
+   - Each review page should have:
+     - Title
+     - Cover image
+     - Rich text (headings, paragraphs, lists)
+   - Add a “Back to Home” button.
+
+5. **Google Sheets Integration**
+   - Use Google Sheets API to fetch card data.
+   - Expected sheet columns: 
+     - `serviceName`, `category` (Affiliate / Code / Coupon), `offer`, `price`, `type` (link/code), `value` (URL or coupon string), `badge`, `slug`.
+   - Cards update dynamically from sheet without redeploy.
+   - Implement server-side fetching (`getServerSideProps` or API route).
+
+6. **Search**
+   - Filters cards across all 3 categories in real time by matching user input with service name, category, or offer text.
+
+7. **Mailing List Integration**
+   - At bottom of the page and after a card click, show a modal asking user to join mailing list.
+   - Integrate with **Mailchimp free tier** (embed form or API).
+   - Text: “Join our list for weekly raffles and the latest codes!”
+
+8. **Tracking**
+   - On every card interaction (link click or code copy), log an event to console (placeholder).
+   - Provide a simple tracking function that can later be connected to Google Analytics.
+
+9. **UI/UX**
+   - Clean, modern, fun look.
+   - Smooth hover animations on cards.
+   - Rounded corners, shadows, gradients for cards.
+   - Toast notifications for “Code copied!” events.
+   - Accordion should open/close smoothly with animations.
+
+10. **Deployment**
+   - App should be ready for deployment on Vercel.
+   - Provide instructions in README for:
+     - Adding Google Sheets API keys via environment variables.
+     - Setting Mailchimp API key or embed code.
+     - How to add new reviews (drop a markdown file in `/content/reviews`).
+
+Deliver full project code with pages, components, styles, utils, and README.
